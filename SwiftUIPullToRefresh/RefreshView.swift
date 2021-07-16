@@ -40,46 +40,34 @@ struct RefreshView: View {
         }
     }
     
-//    var scrollBody: some View {
-//        ScrollView {
-//            Button(action: {
-//                reloadData()
-//            }, label: {
-//                Text("Reload Data")
-//            })
-//            ItemList(items: items)
-//            Button(action: {
-//                loadMoreData()
-//            }, label: {
-//                Text("Load More Data")
-//            })
-//        }
-//    }
     var pullToRefreshScrollBody: some View {
         headerFooterRefresh
+//        headerRefresh
+//        footerRefresh
     }
     
-//    var headerRefresh: some View {
-//        ScrollView {
-//            PullToRefreshView(header: RefreshDefaultHeader()) {
-//                ItemList(items: items)
-//            }
-//        }
-//        .addPullToRefresh(isHeaderRefreshing: $headerRefreshing, onHeaderRefresh: reloadData)
-//    }
-//
-//    var footerRefresh: some View {
-//        ScrollView {
-//            PullToRefreshView(footer: RefreshDefaultFooter()) {
-//                ItemList(items: items)
-//            }
-//        }
-//        .addPullToRefresh(isFooterRefreshing: $footerRefreshing, onFooterRefresh: loadMoreData)
-//    }
-    
+    // 只对头部进行数据下拉刷新
+    var headerRefresh: some View {
+        ScrollView {
+            PullToRefreshView(header: RefreshDefaultHeader()) {
+                ItemList(items: items)
+            }.environmentObject(listState)
+        }
+        .addPullToRefresh(isHeaderRefreshing: $headerRefreshing, onHeaderRefresh: reloadData)
+    }
+    // 只对尾部进行数据上拉加载
+    var footerRefresh: some View {
+        ScrollView {
+            PullToRefreshView(footer: RefreshDefaultFooter()) {
+                ItemList(items: items)
+            }.environmentObject(listState)
+        }
+        .addPullToRefresh(isFooterRefreshing: $footerRefreshing, onFooterRefresh: loadMoreData)
+    }
+    // 下拉刷新、上拉加载
     var headerFooterRefresh: some View {
         ScrollView {
-            PullToRefreshView {
+            PullToRefreshView(header: RefreshDefaultHeader(), footer: RefreshDefaultFooter()) {
                 ItemList(items: items)
             }.environmentObject(listState)
         }
@@ -89,7 +77,6 @@ struct RefreshView: View {
     
     private func loadData() {
         var tempItems: [Item] = []
-        
         for index in 0..<10 {
             if index >= itemsData.count {
                 // 如果已经没有数据，则终止添加

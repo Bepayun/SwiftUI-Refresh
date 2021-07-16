@@ -11,7 +11,6 @@ import SwiftUI
 struct SwiftUIPullToRefreshApp: App {
     var body: some Scene {
         WindowGroup {
-//            ContentView()
             RefreshView()
         }
     }

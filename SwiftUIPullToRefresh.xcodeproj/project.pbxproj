@@ -8,13 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		18B72C6B269DB7C50080601C /* SwiftUIPullToRefreshApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B72C6A269DB7C50080601C /* SwiftUIPullToRefreshApp.swift */; };
-		18B72C6D269DB7C50080601C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B72C6C269DB7C50080601C /* ContentView.swift */; };
 		18B72C6F269DB7CB0080601C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18B72C6E269DB7CB0080601C /* Assets.xcassets */; };
 		18B72C72269DB7CB0080601C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18B72C71269DB7CB0080601C /* Preview Assets.xcassets */; };
 		18B72C7D269DB7CC0080601C /* SwiftUIPullToRefreshTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B72C7C269DB7CC0080601C /* SwiftUIPullToRefreshTests.swift */; };
 		18B72C88269DB7CC0080601C /* SwiftUIPullToRefreshUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B72C87269DB7CC0080601C /* SwiftUIPullToRefreshUITests.swift */; };
-		18B72CA1269E7C9F0080601C /* Refresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B72CA0269E7C9F0080601C /* Refresh.swift */; };
-		18B72CA3269E81840080601C /* WebKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B72CA2269E81840080601C /* WebKit.swift */; };
 		18B72CA8269E98AA0080601C /* RefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B72CA7269E98AA0080601C /* RefreshView.swift */; };
 		18B72CAA269EBFCE0080601C /* LynnPullToRefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B72CA9269EBFCE0080601C /* LynnPullToRefresh.swift */; };
 		18B72CAC269EC0080080601C /* LynnPullToRefreshModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B72CAB269EC0080080601C /* LynnPullToRefreshModifier.swift */; };
@@ -42,7 +39,6 @@
 /* Begin PBXFileReference section */
 		18B72C67269DB7C50080601C /* SwiftUIPullToRefresh.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftUIPullToRefresh.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18B72C6A269DB7C50080601C /* SwiftUIPullToRefreshApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIPullToRefreshApp.swift; sourceTree = "<group>"; };
-		18B72C6C269DB7C50080601C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		18B72C6E269DB7CB0080601C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		18B72C71269DB7CB0080601C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		18B72C73269DB7CB0080601C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -52,8 +48,6 @@
 		18B72C83269DB7CC0080601C /* SwiftUIPullToRefreshUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftUIPullToRefreshUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		18B72C87269DB7CC0080601C /* SwiftUIPullToRefreshUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIPullToRefreshUITests.swift; sourceTree = "<group>"; };
 		18B72C89269DB7CC0080601C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		18B72CA0269E7C9F0080601C /* Refresh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Refresh.swift; sourceTree = "<group>"; };
-		18B72CA2269E81840080601C /* WebKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebKit.swift; sourceTree = "<group>"; };
 		18B72CA7269E98AA0080601C /* RefreshView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshView.swift; sourceTree = "<group>"; };
 		18B72CA9269EBFCE0080601C /* LynnPullToRefresh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LynnPullToRefresh.swift; sourceTree = "<group>"; };
 		18B72CAB269EC0080080601C /* LynnPullToRefreshModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LynnPullToRefreshModifier.swift; sourceTree = "<group>"; };
@@ -110,11 +104,8 @@
 			isa = PBXGroup;
 			children = (
 				18B72C6A269DB7C50080601C /* SwiftUIPullToRefreshApp.swift */,
-				18B72C6C269DB7C50080601C /* ContentView.swift */,
 				18B72CA7269E98AA0080601C /* RefreshView.swift */,
 				18B72CA6269E98600080601C /* PullToRefresh */,
-				18B72CA2269E81840080601C /* WebKit.swift */,
-				18B72CA0269E7C9F0080601C /* Refresh.swift */,
 				18B72C6E269DB7CB0080601C /* Assets.xcassets */,
 				18B72C73269DB7CB0080601C /* Info.plist */,
 				18B72C70269DB7CB0080601C /* Preview Content */,
@@ -288,14 +279,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				18B72CA1269E7C9F0080601C /* Refresh.swift in Sources */,
 				18B72CC3269FC48C0080601C /* LynnRefreshState.swift in Sources */,
 				18B72CA8269E98AA0080601C /* RefreshView.swift in Sources */,
 				18B72CAA269EBFCE0080601C /* LynnPullToRefresh.swift in Sources */,
 				18B72CAE269F06390080601C /* LynnRefreshDefaultViews.swift in Sources */,
 				18B72CAC269EC0080080601C /* LynnPullToRefreshModifier.swift in Sources */,
-				18B72CA3269E81840080601C /* WebKit.swift in Sources */,
-				18B72C6D269DB7C50080601C /* ContentView.swift in Sources */,
 				18B72C6B269DB7C50080601C /* SwiftUIPullToRefreshApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
