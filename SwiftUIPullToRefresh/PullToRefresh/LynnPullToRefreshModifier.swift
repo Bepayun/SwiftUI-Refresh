@@ -54,7 +54,13 @@ struct PullToRefreshModifier: ViewModifier {
                         self.footerRefreshData.refreshState = .stopped
                     }
                 })
-                
+                // 进入界面默认刷新
+                .onAppear {
+                    self.headerRefreshData.refreshState = .loading
+                    self.headerRefreshData.progress = 1.0
+                    self.isHeaderRefreshing = true
+                    self.onHeaderRefresh?()
+                }
                 .backgroundPreferenceValue(HeaderBoundsPreferenceKey.self) { value -> Color in
                     DispatchQueue.main.async {
                         calculateHeaderRefreshState(proxy, value: value)

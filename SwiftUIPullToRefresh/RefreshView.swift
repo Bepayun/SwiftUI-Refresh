@@ -7,19 +7,6 @@
 
 import SwiftUI
 
-
-class ListState: ObservableObject {
-    @Published private(set) var noMore: Bool
-    
-    init() {
-        noMore = false
-    }
-    
-    func setNoMore(_ newNoMore: Bool) {
-        noMore = newNoMore
-    }
-}
-
 struct RefreshView: View {
     
     @State private var items: [Item] = []
