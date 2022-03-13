@@ -54,13 +54,16 @@ struct PullToRefreshModifier: ViewModifier {
                         self.footerRefreshData.refreshState = .stopped
                     }
                 })
-                // 进入界面默认刷新
+                // 进入界面 默认刷新
                 .onAppear {
-                    self.headerRefreshData.refreshState = .loading
-                    self.headerRefreshData.progress = 1.0
-                    self.isHeaderRefreshing = true
-                    self.onHeaderRefresh?()
+                    if(self.headerRefreshData.refreshState == .invalid){
+                        self.headerRefreshData.refreshState = .loading
+                        self.headerRefreshData.progress = 1.0
+                        self.isHeaderRefreshing = true
+                        self.onHeaderRefresh?()
+                    }
                 }
+                
                 .backgroundPreferenceValue(HeaderBoundsPreferenceKey.self) { value -> Color in
                     DispatchQueue.main.async {
                         calculateHeaderRefreshState(proxy, value: value)
@@ -86,8 +89,11 @@ extension PullToRefreshModifier {
         }
         
         // caculate state
-        
         guard headerRefreshData.refreshState != .loading else {
+            return
+        }
+        
+        guard isFooterRefreshing != true else {
             return
         }
         
@@ -141,6 +147,10 @@ extension PullToRefreshModifier {
             headerRefreshData.progress = 1.0
             isHeaderRefreshing = true
             onHeaderRefresh?()
+            if(!isHeaderRefreshing){
+                // 检查一下避免在onHeaderRefresh中同步的改回了false导致onChange没有触发
+                headerRefreshData.refreshState = .stopped
+            }
         }
     }
     
@@ -157,21 +167,25 @@ extension PullToRefreshModifier {
             return
         }
         
+        guard isHeaderRefreshing != true else {
+            return
+        }
+        
         let footerFrame = proxy[bounds]
         let contentFrame = proxy[contentBounds]
         
 //        let contentTop = contentFrame.minY // 未滚动时为0，滚动后为负值
         let y = footerFrame.minY
         let threshold = footerFrame.height
-        let bottomDistance: CGFloat = 20.0
+        let bottomDistance: CGFloat = 30.0
         
         let scrollViewHeight = min(proxy.size.height, contentFrame.height) // 如果满了就以屏幕下边沿计算，如果没填满就以内容下边沿计算
         
         if threshold != footerRefreshData.thresold {
             footerRefreshData.thresold = threshold
         }
-        
-        if y >= proxy.size.width && footerFrame.width == proxy.size.width && footerRefreshData.refreshState == .invalid {
+        // y == (scrollViewHeight + footerRefreshData.thresold)) 等待初始化完成footer到达原始位置 允许一定的浮点误差
+        if abs(y - (scrollViewHeight + footerRefreshData.thresold)) < 0.001 && footerFrame.width == proxy.size.width && footerRefreshData.refreshState == .invalid {
             footerRefreshData.refreshState = .stopped
         }
         
@@ -216,6 +230,10 @@ extension PullToRefreshModifier {
             footerRefreshData.progress = 0.0
             isFooterRefreshing = true
             onFooterRefresh?()
+            if(!isFooterRefreshing){
+                // 检查一下避免在onFooterRefresh中同步的改回了false导致onChange没有触发
+                footerRefreshData.refreshState = .stopped
+            }
         }
     }
 }
